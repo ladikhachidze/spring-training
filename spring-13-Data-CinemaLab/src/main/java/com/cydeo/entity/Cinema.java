@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -19,7 +20,7 @@ public class Cinema extends BaseEntity {
     private String sponsoredName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Location location;
+    private Location location;    // location_id
 
     @Override
     public String toString() {
