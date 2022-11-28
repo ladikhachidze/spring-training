@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController //@Controller + @ResponseBody
 @RequestMapping("/courses/api/v1")
 public class CourseController {
 
@@ -19,6 +19,7 @@ public class CourseController {
 
     @GetMapping
     public List<CourseDTO> getAllCourses(){
+
         return courseService.getCourses();
     }
 
@@ -35,6 +36,7 @@ public class CourseController {
 
     @PostMapping
     public CourseDTO createCourse(@RequestBody CourseDTO course){
+
         return courseService.createCourse(course);
     }
 
