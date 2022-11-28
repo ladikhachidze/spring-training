@@ -25,9 +25,9 @@ public class Consume_RestTemplate {
         return restTemplate.getForEntity(URI, User[].class);
     }
 
+    @GetMapping("{id}")
+    public Object readUser(){
 
-
-
-
+    }
 
 }
