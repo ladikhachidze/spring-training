@@ -1,21 +1,22 @@
 package com.cydeo.controller;
 
+
 import com.cydeo.dto.CourseDTO;
 import com.cydeo.service.CourseService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController //@Controller + @ResponseBody
+@RestController
 @RequestMapping("/courses/api/v1")
 public class CourseController {
 
-    private final CourseService courseService;
+    private CourseService courseService;
 
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
+
 
     @GetMapping
     public List<CourseDTO> getAllCourses(){
@@ -23,16 +24,21 @@ public class CourseController {
         return courseService.getCourses();
     }
 
+
     @GetMapping("{id}")
-    public CourseDTO getCourseById(@PathVariable("id") long courseId){
+    public CourseDTO getCourseById(@PathVariable("id") Long courseId){
+
         return courseService.getCourseById(courseId);
     }
 
-    @GetMapping("category/{name}")
-    public List<CourseDTO> getCourseByCategory(@PathVariable("name") String category){
-        return courseService.getCoursesByCategory(category);
 
+    @GetMapping("category/{name}")
+    public List<CourseDTO> getCourseByName(@PathVariable("name") String catName){
+
+        return courseService.getCoursesByCategory(catName);
     }
+
+
 
     @PostMapping
     public CourseDTO createCourse(@RequestBody CourseDTO course){
@@ -40,19 +46,19 @@ public class CourseController {
         return courseService.createCourse(course);
     }
 
+
     @PutMapping("{id}")
-    public void updateCourse(@PathVariable("id") long courseId,@RequestBody CourseDTO course){
+    public void updateCourse(@PathVariable("id") Long courseId,@RequestBody CourseDTO course){
+
         courseService.updateCourse(courseId,course);
     }
 
+
     @DeleteMapping("{id}")
-    public void deleteCourseById(@PathVariable("id") long courseId){
+    public void deleteCourseById(@PathVariable("id") Long courseId){
+
         courseService.deleteCourseById(courseId);
 
     }
-
-
-
-
 
 }
