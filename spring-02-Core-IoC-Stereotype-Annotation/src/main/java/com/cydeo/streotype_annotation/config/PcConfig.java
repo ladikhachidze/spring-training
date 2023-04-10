@@ -7,4 +7,5 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("com.cydeo.streotype_annotation")
 public class PcConfig {
 
+
 }

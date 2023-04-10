@@ -13,7 +13,8 @@ public class ComputerTest {
         ApplicationContext container = new AnnotationConfigApplicationContext(PcConfig.class);
 
         Case theCase = container.getBean(Case.class);
-
         System.out.println(theCase.getDimensions().getDepth());
+
+
     }
 }

@@ -10,7 +10,10 @@ public class ComputerTest {
 
         ApplicationContext container = new AnnotationConfigApplicationContext(PcConfig.class);
 
+
         Monitor theMonitor = container.getBean(Monitor.class);
         System.out.println(theMonitor.getSize());
+
+
     }
 }

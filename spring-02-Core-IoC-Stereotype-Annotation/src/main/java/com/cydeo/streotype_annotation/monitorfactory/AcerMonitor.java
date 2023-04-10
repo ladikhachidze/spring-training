@@ -11,6 +11,6 @@ public class AcerMonitor extends Monitor {
     }
 
     public void drawPixelAt() {
-        System.out.println("Drawing pixel with Sony");
+        System.out.println("Drawing pixel with Acer");
     }
 }
