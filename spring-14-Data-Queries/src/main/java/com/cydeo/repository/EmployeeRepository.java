@@ -4,6 +4,7 @@ import com.cydeo.entity.Employee;
 import org.hibernate.sql.Select;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.time.LocalDate;
@@ -60,6 +61,30 @@ public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 
     @Query("select e from Employee e where e.hireDate > ?1")
     List<Employee> retriveEmplyeeHireDateBefore(LocalDate date);
+
+
+    @Query("select e from Employee e where e.email is null ")
+    List<Employee> retrieveEmployeeIsNull();
+
+
+    @Query("select e from Employee e where e.email is Not null ")
+    List<Employee> retrieveEmployeeIsNotNull();
+
+
+    @Query("select e from Employee e order by e.salary")
+    List<Employee> retrieveEmployeeSalaryOrderAsc();
+
+    @Query("select e from Employee e order by e.salary desc")
+    List<Employee> retrieveEmployeeSalaryOrderDesc();
+
+    //Native Query
+    @Query(value = "SELECT * FROM employees WHERE salary = ?1", nativeQuery = true)
+    List<Employee> retrieveEmployeeDitailBySalary(int salary);
+
+
+    @Query("select e from Employee e where e.salary = :salary")
+    List<Employee> retrieveEmployeeSalary(@Param("salary")int salary);
+
 
 
 
