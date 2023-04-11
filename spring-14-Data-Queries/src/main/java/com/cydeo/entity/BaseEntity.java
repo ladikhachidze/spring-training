@@ -8,5 +8,5 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity {
 
     @Id
-    private Long id;
+    private Integer id;
 }
